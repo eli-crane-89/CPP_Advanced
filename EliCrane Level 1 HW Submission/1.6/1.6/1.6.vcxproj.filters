@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Exercise1">
+      <UniqueIdentifier>{068cc12e-6202-447a-bfa2-96cb8752d9bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Exercise2">
+      <UniqueIdentifier>{8ba4f029-afd8-4aa7-b963-f6f217b06f52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Exercise3">
+      <UniqueIdentifier>{c78bcacd-b73e-424c-95f8-6b1ea1f0ff9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Exercise4">
+      <UniqueIdentifier>{3a5d5eba-1191-4d38-9e09-d0b0ac4d672f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Exercise1.hpp">
+      <Filter>Header Files\Exercise1</Filter>
+    </ClInclude>
+    <ClInclude Include="Exercise1_AddCode.hpp">
+      <Filter>Header Files\Exercise1</Filter>
+    </ClInclude>
+    <ClInclude Include="Exercise2.hpp">
+      <Filter>Header Files\Exercise2</Filter>
+    </ClInclude>
+    <ClInclude Include="TMP.hpp">
+      <Filter>Header Files\Exercise2</Filter>
+    </ClInclude>
+    <ClInclude Include="Exercise3.hpp">
+      <Filter>Header Files\Exercise3</Filter>
+    </ClInclude>
+    <ClInclude Include="Exercise4.hpp">
+      <Filter>Header Files\Exercise4</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.hpp">
+      <Filter>Header Files\Exercise4</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
