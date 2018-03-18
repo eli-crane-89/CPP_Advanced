@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <boost\thread.hpp>
+//#include <boost\thread.hpp>
 #include <atomic>
 
 #include "SynchronizationQueue.hpp"

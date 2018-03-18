@@ -4,6 +4,8 @@
 #include <chrono>
 #include <thread>
 
+#include <iostream>
+
 #include "StopWatch.hpp"
 
 inline StopWatch::StopWatch() : storedTime(0.0), inProgress(false) {};
@@ -17,8 +19,10 @@ inline void StopWatch::StartStopWatch() {
 
 inline void StopWatch::StopStopWatch() {
 	//Stores the current time in storedTime and turns off in progress
-	StopWatch::storedTime += StopWatch::GetTime();
+	StopWatch::storedTime = StopWatch::GetTime();
 	StopWatch::inProgress = false;
+	std::cout << "stop: " << StopWatch::storedTime << std::endl;
+	
 }
 
 inline void StopWatch::Reset() {

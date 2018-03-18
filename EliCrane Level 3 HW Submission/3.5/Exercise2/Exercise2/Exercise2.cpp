@@ -17,7 +17,7 @@ double subtract(double num) {
 }
 
 double divide(double num) {
-	return num - num;
+	return num / num;
 }
 
 int main()
@@ -40,9 +40,10 @@ int main()
 
 	//d) Execute
 	while (pq.size() > 0) {
-		pq.top().Execute(2.0);
+		pq.top().Execute(3.0);
 		pq.pop();
 	}
+	//This executes in the order that the Id is in with execution order of: 4,7,8,15,22
 
     return 0;
 }

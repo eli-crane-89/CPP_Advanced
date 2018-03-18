@@ -2,7 +2,7 @@
 #define SYNCHRONIZATIONQUEUE_HPP
 
 #include <queue>
-#include <boost\thread.hpp>
+//#include <boost\thread.hpp>
 #include <thread>
 #include <condition_variable>
 
