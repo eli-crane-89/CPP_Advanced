@@ -119,7 +119,7 @@ int main()
 	endSum = std::chrono::steady_clock::now();
 	std::cout << "Time it took to run the task graph: " << std::chrono::duration_cast<std::chrono::microseconds>(endSum - beginSum).count() << std::endl;
 
-	//The tasks speed is nearly as slow as the single thread
+	//The tasks speed is around as fast as the async graph
 
     return 0;
 }
