@@ -10,7 +10,7 @@ template<typename T>
 class SynchronizationQueue
 {
 private:
-	std::queue<T>m_queue;
+	std::queue<T> m_queue;
 	boost::mutex m_mutex;
 	boost::condition_variable m_cond;
 public:

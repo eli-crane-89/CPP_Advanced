@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <memory>
 
 #include "SynchronizationQueue.hpp"
 
@@ -10,12 +11,12 @@ class Consumer
 {
 private:
 	int m_id;
-	SynchronizationQueue<std::string>* m_queue;
+	std::shared_ptr<SynchronizationQueue<std::string>> m_queue;
 
 public:
 
 	//Constructor
-	Consumer(int id, SynchronizationQueue<std::string>* queue) {
+	Consumer(int id, std::shared_ptr<SynchronizationQueue<std::string>> queue) {
 		m_id = id;
 		m_queue = queue;
 	}
@@ -23,7 +24,7 @@ public:
 	//Reads data from queue
 	void operator() () {
 		while (true) {
-			std::cout << "Consumer " << std::to_string(m_id).c_str();
+			std::cout << "Consumer " << std::to_string(m_id).c_str() << std::endl;
 			std::cout << " consumed: (" << m_queue->Dequeue().c_str() << ")\n";
 
 			//Provide interruption point

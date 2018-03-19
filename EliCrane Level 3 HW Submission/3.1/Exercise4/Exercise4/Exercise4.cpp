@@ -1,5 +1,6 @@
 #include <boost\thread.hpp>
 #include <string>
+#include <memory>
 
 #include "SynchronizationQueue.hpp"
 #include "Producer.hpp"
@@ -13,19 +14,19 @@ int main()
 	int nrProducers = 3, nrConsumers = 3;
 
 	//The shared queue
-	SynchronizationQueue<string> queue;
+	std:shared_ptr<SynchronizationQueue<string>> sp_queue(new SynchronizationQueue<string>);
 
 	//Create producers
 	boost::thread_group producers;
 	for (int i = 0; i < nrProducers; i++) {
-		Producer p(i, &queue);
+		Producer p(i, sp_queue);
 		producers.create_thread(p);
 	}
 
-	//Create producers
+	//Create consumers
 	boost::thread_group consumers;
 	for (int i = 0; i < nrConsumers; i++) {
-		Consumer p(i, &queue);
+		Consumer p(i, sp_queue);
 		consumers.create_thread(p);
 	}
 
@@ -33,7 +34,8 @@ int main()
 	getchar();
 
 	// Interrupt the threads and stop them
-	producers.interrupt_all(); producers.join_all();
+	producers.interrupt_all(); 
+	producers.join_all();
 	consumers.interrupt_all(); consumers.join_all();
 
     return 0;

@@ -11,11 +11,11 @@ class Producer
 {
 private:
 	int m_id;
-	SynchronizationQueue<std::string>* m_queue;
+	std::shared_ptr<SynchronizationQueue<std::string>> m_queue;
 
 public:
 	//Constructor
-	Producer(int id, SynchronizationQueue<std::string>* queue) {
+	Producer(int id, std::shared_ptr<SynchronizationQueue<std::string>> queue) {
 		m_id = id;
 		m_queue = queue;
 	}
@@ -27,7 +27,7 @@ public:
 		while (true) {
 
 			//Produce an incrementing string and put in queue
-			std::string str = "Producer: " + std::to_string(m_id) + " data: " + std::to_string(data++);
+			std::string str = "Producer: " + std::to_string(m_id) + " data: " + std::to_string(data++) + "\n";
 			m_queue->Enqueue(str);
 
 			std::cout << str << std::endl;
