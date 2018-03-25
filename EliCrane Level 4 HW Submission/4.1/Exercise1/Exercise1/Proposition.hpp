@@ -16,17 +16,15 @@ public:
 	Proposition(std::bitset<1>);
 
 	//Boolean operators
-	Proposition operator==(const Proposition&);
-	Proposition operator!=(const Proposition&);
-	Proposition operator&(const Proposition&);
-	//Proposition operator&(const bool); //For when a bool is encountered
-	Proposition operator|(const Proposition&);
-	//Proposition operator|(const bool); //For when a bool is encountered
-	Proposition operator^(const Proposition&);
-	friend Proposition operator %(const Proposition&, const Proposition&);
-	friend Proposition operator>(const Proposition&, const Proposition&); //biconditional, use > since does not have meaning for class
-	friend std::ostream& operator<<(std::ostream&, const Proposition&);
-	Proposition operator!();
+	const bool operator== (const Proposition&) const;
+	const bool operator!= (const Proposition&) const;
+	const Proposition operator& (const Proposition&) const;
+	const Proposition operator| (const Proposition&) const;
+	const Proposition operator^ (const Proposition&) const;
+	friend const Proposition operator% (const Proposition&, const Proposition&);
+	friend const Proposition operator> (const Proposition&, const Proposition&); //biconditional, use > since does not have meaning for class
+	friend std::ostream& operator<< (std::ostream&, const Proposition&);
+	const Proposition operator! () const;
 
 	//Assign bool
 	operator bool();

@@ -18,49 +18,31 @@ Proposition::Proposition(bool bl) {
 Proposition::Proposition(std::bitset<1> bst) : data(bst) {};
 
 //Operators
-Proposition Proposition::operator==(const Proposition& propComp) {
+const bool Proposition::operator==(const Proposition& propComp) const{
 	if (Proposition::data[0] == propComp.data[0]) {
-		return Proposition(true);
+		return true;
 	}
 
 	return false;
 }
 
-Proposition Proposition::operator!=(const Proposition& propComp) {
+const bool Proposition::operator!=(const Proposition& propComp) const{
 	if (Proposition::data[0] != propComp.data[0]) {
-		return Proposition(true);
+		return true;
 	}
 
 	return false;
 }
 
-Proposition Proposition::operator&(const Proposition& propComp) {
+const Proposition Proposition::operator&(const Proposition& propComp) const{
 	if (Proposition::data[0] && propComp.data[0]) {
 		return Proposition(true);
 	}
 
-	return false;
+	return Proposition(false);
 }
 
-//Proposition Proposition::operator&(const bool bl) {
-//	//Only return true if Prop is true and bool is true
-//	if (Proposition::data[0] == bl == true) {
-//		return true;
-//	}
-//
-//	return Proposition(false);
-//}
-//
-//Proposition Proposition::operator|(const bool bl) {
-//	//Return true if Prop is true or bool is true
-//	if (Proposition::data[0] == true || bl == true) {
-//		return Proposition(true);
-//	}
-//
-//	return Proposition(false);
-//}
-
-Proposition Proposition::operator|(const Proposition& propComp) {
+const Proposition Proposition::operator|(const Proposition& propComp) const{
 	if (Proposition::data[0] | propComp.data[0]) {
 		return Proposition(true);
 	}
@@ -68,7 +50,7 @@ Proposition Proposition::operator|(const Proposition& propComp) {
 	return Proposition(false);
 }
 
-Proposition Proposition::operator^(const Proposition& propComp) {
+const Proposition Proposition::operator^(const Proposition& propComp) const {
 	if (propComp.data[0] | Proposition::data[0]) {
 		return Proposition(true);
 	}
@@ -76,7 +58,7 @@ Proposition Proposition::operator^(const Proposition& propComp) {
 	return Proposition(false);
 }
 
-Proposition Proposition::operator!() {
+const Proposition Proposition::operator!() const{
 	if (!Proposition::data[0]) {
 		return Proposition(true);
 	}
@@ -84,7 +66,7 @@ Proposition Proposition::operator!() {
 	return Proposition(false);
 }
 
-Proposition operator%(const Proposition& propCompA, const Proposition& propCompB) {
+const Proposition operator%(const Proposition& propCompA, const Proposition& propCompB) {
 	if (propCompA.data[0] && propCompB.data[0]) {
 		return Proposition(true);
 	}
@@ -95,7 +77,7 @@ Proposition operator%(const Proposition& propCompA, const Proposition& propCompB
 	return Proposition(false);
 }
 
-Proposition operator>(const Proposition& propCompA, const Proposition& propCompB) {
+const Proposition operator>(const Proposition& propCompA, const Proposition& propCompB) {
 	if (propCompA.data[0] == propCompB.data[0]) {
 		return Proposition(true);
 	}
@@ -103,7 +85,7 @@ Proposition operator>(const Proposition& propCompA, const Proposition& propCompB
 	return Proposition(false);
 }
 
-std::ostream& operator<<(std::ostream& stream, const Proposition& prop) {
+std::ostream& operator<<(std::ostream& stream, const Proposition& prop){
 	stream << std::boolalpha << prop.data[0];
 	return stream;
 }
