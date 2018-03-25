@@ -30,7 +30,8 @@ int main()
 	//Lambda also have the advantage they can be written directly into the algorithm, but this
 	//futher compounds difficulty with readability. Because lambdas are not templatable, 
 	//that makes them harder to generecize, and means that multiple lambdas with similar 
-	//functionality may need to be maintained.
+	//functionality may need to be maintained. Lambda can use variables by capture though,
+	//which is powerful because it allows the access of variables defined outside of the function.
 
 	//STL function objects should always be used if one exists that performs your specific 
 	//functionality, since this reduces the code the developer must write and maintain.
@@ -44,11 +45,10 @@ int main()
 	//Function object
 	struct fo_Threshold {
 		fo_Threshold() {}
-		bool operator()(int x, int threshold) { return std::abs(x) > threshold == 0; }
+		bool operator()(int x, int threshold) { return std::abs(x) > threshold; }
 	};
 
-	//Lambda function
-	auto l_Threshold = [](int x) {return std::abs(x) > 5; };
+	
 
 	//Define test vector
 	std::vector<int> v1 = { -4,-6,1,7,5,4,8,9 };
@@ -56,44 +56,49 @@ int main()
 	//Define threshold
 	int threshold = 2;
 
-	//Copy test vector to second vector for modifying
-	auto v2 = v1;
+	//Create result vector
+	std::vector<int> vResult(v1.size());
 
 	//Bind Threshold
 	using namespace std::placeholders;
 	auto bind_Threshold = std::bind(fo_Threshold(), _1, threshold); //Bind threshold
 
-	//Use remove_if and erase to reconstruct vector with relevant elements
 	//Function object
-	v2.erase(std::remove_if(v2.begin(), v2.end(),  bind_Threshold), v2.end());
-	lPrint(v2, "v1 after all numbers of abs value under 2 remove via function object");
+	//Use Copy if
+	auto it = std::copy_if(v1.begin(), v1.end(), vResult.begin(), bind_Threshold);
+	
+	//Resize and print
+	vResult.resize(std::distance(vResult.begin(), it));
+	lPrint(vResult, "v1 after all numbers of abs value under 2 remove via function object");
 
 	//Lambda
-	//Copy test vector to second vector for modifying
-	v2 = v1;
-	
-	v2.erase(std::remove_if(v2.begin(), v2.end(), l_Threshold), v2.end());
-	lPrint(v2, "v1 after all numbers of abs value under 2 removed via lambda");
+
+	//Create new result array to pass by capture
+	std::vector<int> vLambdaRes;
+
+	//Lambda function with variable capture
+	auto l_Threshold = [&](int x) {if (std::abs(x) > threshold) { vLambdaRes.push_back(x); }};
+
+	std::for_each(v1.begin(), v1.end(), l_Threshold);
+	lPrint(vLambdaRes, "v1 after all numbers of abs value under 2 removed via lambda");
 
 	//STL function object
-	//Copy test vector to second vector for modifying
-	//need third vector since operation will need to be performed twice
 	//since STL has no way of mixing std::greater and std::abs
-	v2 = v1;
-	auto v3 = v1;
+	//I will need to do two separate checks and combine results
+	auto bind_great_pos2 = std::bind(std::greater<>(), _1, 2);
+	auto bind_less_neg2 = std::bind(std::less<>(), _1, -2);
 
-	auto bind_great_pos2 = std::bind(std::less<>(), _1, 2);
-	auto bind_great_neg2 = std::bind(std::greater<>(), _1, -2);
-	v2.erase(std::remove_if(v2.begin(), v2.end(), bind_great_pos2), v2.end());
-	v3.erase(std::remove_if(v3.begin(), v3.end(), bind_great_neg2), v3.end());
+	auto it_res = std::copy_if(v1.begin(), v1.end(), vResult.begin(), bind_less_neg2);
+	std::copy_if(v1.begin(), v1.end(), it_res, bind_great_pos2);
 
-	lPrint(v2, "v1 of all positive numbers with abs val greater than two after STL function");
-	lPrint(v3, "v1 of all negative numbers with abs val greater than two after STL function");
+	lPrint(vResult, "v1 of all positive numbers with abs val greater than two after STL function");
+
 
 	//c)
 	//So, after using all three, I think function objects are the most flexible and easiest to maintain for user
 	//defined functions. That being said, it is easier writing a lambda function so if you only need it once,
-	//a lambda is better. I did realize you cannot bind a lambda, making it even harder to reuse. Trying to use
+	//a lambda is better. I did realize you cannot bind a lambda, making it even harder to reuse. That being said,
+	//variable capture with lambas can be very powerful, and provides some usability that functors do not. Trying to use
 	//the STL function objects of greater and less demonstrates the biggest problems with STL: lack of flexbility.
 	//There was simply no easy way to return the absolute values from a list and compare them to the threshold.
 	//This is why I split the work into two functions. So while STL functions are good for their specific purpose
