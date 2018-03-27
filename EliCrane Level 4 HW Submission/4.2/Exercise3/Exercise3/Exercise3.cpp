@@ -110,7 +110,7 @@ int main()
 	lPrint(vGen, "vGen after all odds replaced with 0");
 
 	//n) Remove all elements whose value is less than 100.
-	//remove_if - Modifying but does not resisze container, so needs to be used with erase
+	//remove_if - Removing but does not resisze container, so needs to be used with erase
 	vGen.erase(std::remove_if(vGen.begin(), vGen.end(), [](int t) {return t < 100;}), vGen.end());
 	lPrint(vGen, "vGen after all numbers under 100 removed");
 
