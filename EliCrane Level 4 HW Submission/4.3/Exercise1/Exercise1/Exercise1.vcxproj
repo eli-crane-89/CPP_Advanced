@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{4757ED0C-E5E2-4999-96BD-08BD2DE7DA72}</ProjectGuid>
+    <ProjectGuid>{9CAD8477-080D-462E-B713-8028E71EBADC}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Exercise8</RootNamespace>
+    <RootNamespace>Exercise1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -143,11 +143,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Exercise8.cpp" />
-    <ClCompile Include="Stack.cpp" />
+    <ClCompile Include="Exercise1.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Stack.hpp" />
+    <ClInclude Include="RandomFunction.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
