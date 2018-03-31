@@ -19,8 +19,8 @@ int main()
 	//Function objects are useful in certain applications because of how naturally they work with
 	//mathematical functional notation (e.g f(f(x))). When used as a unary or binary predicate
 	//the fo is fairly straightforward, and using bind can easily emplace the correct argument
-	//The problem with user defined function objects is that they are the user's owned, so all 
-	//maintenance must be done by the user. The fos are fairly readable and templatable, so they
+	//The problem with user defined function objects is that they are user owned, so all 
+	//maintenance must be done by the programmer. The fos are fairly readable and templatable, so they
 	//can be genericized pretty easily.
 
 	//Lambdas are pretty similar to function objects in terms of readability for most situations

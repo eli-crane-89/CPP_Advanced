@@ -6,10 +6,16 @@
 #include <numeric>
 
 //Forward declare
-std::vector<int> ReturnPowerSet(const std::vector<int>&);
-void heapPermutation(std::vector<int>&, int, const int, std::vector<int>&, int&);
+std::vector<int> GeneratePermutations(const std::vector<int>&);
 
-auto lPrint = [](std::vector<int>& v, std::string msg, int lineSize) {
+
+
+auto lPrint = [](std::vector<int>& v, std::string msg, int lineSize = 999) {
+
+	if (lineSize == 999) {
+		lineSize = v.size();
+	}
+
 	std::cout << msg << ":\n";
 	int lineCounter = 0;
 	for (auto elem : v) {
@@ -40,7 +46,7 @@ int main()
 
 	//c)
 	S = { 1,-1,7,8,9,10 }; //Reinstantiating 
-	auto vPower = ReturnPowerSet(S);
+	auto vPower = GeneratePermutations(S);
 	lPrint(vPower, "A printing of all the power sets.", S.size());
 
 	//d)
@@ -60,60 +66,60 @@ int factorial(int n)
 }
 
 
-//Generating permutation using Heap Algorithm
-void heapPermutation(std::vector<int>& v, int size, const int n, std::vector<int>& vPower, int& permCounter)
-{
-	// if size becomes 1 then load permutation
-	if (size == 1)
-	{
-		for (auto it = v.begin(); it != v.end(); it++) {
-			vPower.push_back(*it);
+
+bool nextPerm(std::vector<int>::iterator iterFirst, std::vector<int>::iterator iterLast){
+	//Set iterCur to last term iterator
+	if (iterFirst == iterLast)
+		return false;
+	auto iterCur = iterFirst;
+	++iterCur;
+	if (iterCur == iterLast)
+		return false;
+	iterCur = iterLast;
+	--iterCur;
+
+	while (true) {
+		auto iterCur2 = iterCur;
+		--iterCur;
+
+		if (*iterCur < *iterCur2) {
+			auto iterCur3 = iterLast;
+			while (!(*iterCur < *--iterCur3)) {
+			}
+			std::iter_swap(iterCur, iterCur3);
+			std::reverse(iterCur2, iterLast);
+			return true;
 		}
-		//Keep track of permutations for exit condition
-		permCounter++;
-		
-	}
-
-	//If permCounter + 1 == n permutations then exit
-	if (permCounter + 1 == factorial(n)) {
-		return;
-	};
-
-	for (int i = 0; i<size; i++)
-	{
-		//Recursive call
-		heapPermutation(v, size - 1, n, vPower, permCounter);
-		// if size is odd, swap first and last
-		// element
-		if (size % 2 == 1) {
-			std::swap(v[0], v[size - 1]);
-		}
-
-		// If size is even, swap ith and last
-		// element
-		else {
-			std::swap(v[i], v[size - 1]);
+		if (iterCur == iterFirst) {
+			std::reverse(iterFirst, iterLast);
+			return false;
 		}
 	}
 }
 
-//Heap permutation wrapper class
-std::vector<int> ReturnPowerSet(const std::vector<int>& vConst) {
-	//Copy over so original vector is unmodified
-	std::vector<int> v = vConst;
+//Generate Permutation
+std::vector<int> GeneratePermutations(const std::vector<int>& v) {
+	auto vWork = v;
+	//Sort vWork for nextPerm algorithm to work
+	std::sort(vWork.begin(), vWork.end());
+
+	const auto size = vWork.size();
+	const auto sizeFact = factorial(size);
+
+	//Create result vector
+	std::vector<int> vResults(sizeFact * size);
+	int incCounter = 0;
 	
-	//Result vector
-	std::vector<int> vPower;
-
-	//Determine size for heapPermutation
-	int n = v.size();
-
-	//To keep track of perms
+	//For exit condition
 	int permCounter = 0;
 
-	//Call heap permutation class
-	heapPermutation(v, n, n, vPower, permCounter);
-
-	return vPower;
-
+	//Insert first results
+	do {
+		for (int i = 0; i < size; i++) {
+			vResults[i + permCounter*size] = vWork[i];
+		}
+		permCounter++;
+	} while (permCounter < factorial(size) && nextPerm(vWork.begin(), vWork.end())); 
+		
+	return vResults;
 }
