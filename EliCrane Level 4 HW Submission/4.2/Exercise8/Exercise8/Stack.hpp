@@ -7,6 +7,7 @@ template<typename T>
 class Stack {
 
 private:
+	//deque used for flexibility
 	std::deque<T> stack;
 
 public:

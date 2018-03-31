@@ -90,7 +90,7 @@ int main()
 	std::cout << S2.size() - (std::distance(S2.rbegin(), res_rev) + vSub.size()) << std::endl;
 
 	//e)
-	//use adjacent find but start from right
+	//use adjacent find
 	S2 = { 1,2,5,5,-3,4,5,5,5,6,3,4,5 };
 	res = std::adjacent_find(S2.begin(), S2.end());
 	std::cout << "The first element to have a value equal to the next element is " << *res;
@@ -99,7 +99,7 @@ int main()
 	//f)
 	//determine if equal
 	std::vector<int> S1 = { 1,2,5 };
-	std::cout << "S1 equal to S1: " << std::boolalpha << std::equal(S1.begin(), S1.end(), S2.begin()) << std::endl;
+	std::cout << "S1 equal to S2: " << std::boolalpha << std::equal(S1.begin(), S1.end(), S2.begin()) << std::endl;
 	//S1 is equal to S2 if you use S1 to start since it will then only search for the first three elements
 	
     return 0;
