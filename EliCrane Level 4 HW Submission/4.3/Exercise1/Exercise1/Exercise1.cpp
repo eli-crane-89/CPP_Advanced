@@ -226,23 +226,19 @@ int main()
 
 	std::cout << "cauchy:\n";
 	//Bind to function
-	t_dist<double, std::mt19937_64> f_cauchdist = cauchy_dist;
-	printVec<double>(GenericNumberGeneration(f_cauchdist, 10));
+	printVec<double>(GenericNumberGeneration<double>(cauchy_dist, mt64_eng, 100));
 			
 	std::cout << "Bernouill:\n";
 	//Bind to function
-	t_dist<double, std::mt19937> f_bern = bern_dist;
-	printVec<double>(GenericNumberGeneration(f_bern, 10 ));
+	printVec<double>(GenericNumberGeneration<double>(bern_dist,mt_eng, 10 ));
 
 	std::cout << "Normal:\n";
 	//Bind to function
-	t_dist<double, std::mt19937_64> f_norm = nm_dist;
-	printVec<double>(GenericNumberGeneration(f_norm, 10));
+	printVec<double>(GenericNumberGeneration<double>(nm_dist, lce_eng, 10));
 
 	std::cout << "Chi:\n";
 	//Bind to function
-	t_dist<double, std::minstd_rand> f_chi = chi_dist;
-	printVec<double>(GenericNumberGeneration(f_chi, 10));
+	printVec<double>(GenericNumberGeneration<double>(chi_dist, mt64_eng, 10));
 
     return 0;
 }

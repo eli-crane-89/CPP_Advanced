@@ -3,22 +3,21 @@
 
 #include <functional>
 #include <vector>
-#include <random>
 
+
+using namespace std::placeholders;
 //Create type with return T and
 //engine for distribution
 template<typename T, class Engine>
 using t_dist = std::function<T(Engine)>;
 
-template<typename T, class Engine>
-std::vector<T> GenericNumberGeneration(t_dist<T, Engine>& dist, int N) {
+template<typename T, typename Dist, typename Engine>
+std::vector<T> GenericNumberGeneration(Dist dist, Engine eng, int N) {
 	std::vector<T> vRet;
 	
-	//Use random device for true random numbers
-	std::random_device rd;
-
+	//Generate N random numbers along the distribution
 	for (int i = 0; i < N; i++) {
-		vRet.push_back(dist(Engine(rd())));
+		vRet.push_back(dist(eng));
 	}
 	return vRet;
 }
