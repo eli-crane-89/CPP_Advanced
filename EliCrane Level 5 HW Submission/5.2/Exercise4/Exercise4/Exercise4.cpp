@@ -27,7 +27,7 @@ int main()
 	auto it_token2 = std::sregex_token_iterator(S3.begin(), S3.end(), myReg10);
 	auto it_token2_end = std::sregex_token_iterator();
 
-	//Plase results in vector of chars
+	//Place results in vector of chars
 	std::vector<char> vChar;
 	while (it_token2 != it_token2_end) {
 		vChar.push_back(boost::lexical_cast<char>(*it_token2));
