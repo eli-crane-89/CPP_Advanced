@@ -24,13 +24,13 @@ bool operator()(InputIterator first, InputIterator last) const
 
 int main()
 {
-	//a)
+	//b)
 	boost::signals2::signal<bool(), BootstrapCheck> sig;
 	sig.connect([] {return true; });
 	sig.connect([] {return false; });
 	sig.connect([] {return true; });
 
-	//b)
+	//c)
 	sig();
 
 	std::cout << sig() << std::endl;
