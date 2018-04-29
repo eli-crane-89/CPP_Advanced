@@ -35,7 +35,9 @@ struct Database {
 };
 
 //Define a Subject as a signal
-typedef boost::signals2::signal<void(double)> Subject;
+struct Subject {
+	
+};
 
 int main()
 {
