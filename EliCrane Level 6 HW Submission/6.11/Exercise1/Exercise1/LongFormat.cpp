@@ -17,7 +17,7 @@ void LongFormat::Update(Subject* subject) {
 
 	if (subject == m_counter) {
 		long long ll = (long long)m_counter->GetCounter();
-		std::cout << ll  << std::endl;
+		std::cout << "Long format: " << ll  << std::endl;
 	}
 
 }

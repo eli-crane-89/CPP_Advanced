@@ -17,8 +17,7 @@ DoubleFormat::DoubleFormat(Counter* subject) : m_counter(subject) {
 void DoubleFormat::Update(Subject* subject) {
 
 	if (subject == m_counter) {
-		double d = (double)m_counter->GetCounter();
-		std::cout << std::setprecision(20) << d << std::endl;
+		std::cout << "Double format: " << std::setprecision(20) << (double)m_counter->GetCounter() << std::endl;
 	}
 
 }
