@@ -14,17 +14,21 @@ private:
 	int _value;
 
 
+	//Private
+	void IncreaseCounter();
+	void DecreaseCounter();
+
+
 public:
 	//Constructor
 	Counter();
 	Counter(int);
 
 	//Methods
-	void AddObservable(Observable*);
-	void DeleteObservable(Observable*);
+	void AddObservable(const std::shared_ptr<Observable>&);
+	void DeleteObservable(const std::shared_ptr<Observable>&);
 	void NotifyObservables();
-	void IncreaseCounter();
-	void DecreaseCounter();
+	
 	int GetCounter() const;
 	void Update();
 

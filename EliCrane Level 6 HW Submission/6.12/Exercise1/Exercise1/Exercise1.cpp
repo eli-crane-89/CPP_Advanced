@@ -5,17 +5,19 @@
 
 int main()
 {
-	Counter c1;
-	Counter c2(3);
-	Counter c3(17);
-	Counter c4(15);
+	//Make shared pointers
+	std::shared_ptr<Observable> c1 = std::make_shared<Counter>(0);
+	std::shared_ptr<Observable> c2 = std::make_shared<Counter>(3);
+	std::shared_ptr<Observable> c3 = std::make_shared<Counter>(17);
+	std::shared_ptr<Observable> c4 = std::make_shared<Counter>(99);
 
-	c2.AddObservable(&c3);
-	c2.AddObservable(&c4);
-	c1.AddObservable(&c2);
+	//Create Tree
+	c2.get()->AddObservable(c3);
+	c2.get()->AddObservable(c4);
+	c1.get()->AddObservable(c2);
 
-	//Updates c2, c3, c4
-	c1.IncreaseCounter();
+	//Update all trees
+	c1.get()->Update();
 
     return 0;
 }

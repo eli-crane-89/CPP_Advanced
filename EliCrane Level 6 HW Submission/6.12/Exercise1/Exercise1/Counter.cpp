@@ -26,12 +26,12 @@ void Counter::DecreaseCounter() {
 int Counter::GetCounter() const{
 	return _value;
 }
-void Counter::AddObservable(Observable* obs) {
+void Counter::AddObservable(const std::shared_ptr<Observable>& obs) {
 	//Delegate to observable
 	Observable::AddObservable(obs);
 }
 
-void Counter::DeleteObservable(Observable* obs) {
+void Counter::DeleteObservable(const std::shared_ptr<Observable>& obs) {
 	//Delegate to observable
 	Observable::DeleteObservable(obs);
 }
@@ -44,10 +44,10 @@ void Counter::NotifyObservables() {
 void Counter::Update() {
 	std::cout << "This counter is at: " << _value << std::endl;
 
-	//On Update Decrease Counter to Furthe Propogate
+	//On Update Decrease Counter to Propogate
 	DecreaseCounter();
 
-	//Create recursive call to Notify Observables
+	//Create recursive call to Notify Downstream Observables
 	Observable::NotifyObservables();
 }
 
