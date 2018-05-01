@@ -34,16 +34,16 @@ public:
 	//Default constructor;
 	ShapeComposite();
 
-	//d)
+	//d) Add Shape Method
 	void AddShape(std::shared_ptr<CAD::Shape> S);
 
-	//f)
+	//f) Iterator Return Functions
 	iterList begin();
 	iterList end();
 	citerList cbegin() const;
 	citerList cend() const;
 
-	//g)
+	//g) Count
 	long Count();
 
 

@@ -59,6 +59,7 @@ namespace CAD {
 
 	//Clone
 	std::shared_ptr<CAD::Shape> Line::Clone() {
+		//Returns new shared pointer with same parameters
 		return std::make_shared<Line>(_p1, _p2);
 	}
 

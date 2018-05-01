@@ -54,6 +54,7 @@ namespace CAD {
 
 	//Clone
 	std::shared_ptr<CAD::Shape> Circle::Clone() {
+		//Returns new shared pointer with same parameters
 		return std::make_shared<Circle>(centerPoint, radius);
 	}
 

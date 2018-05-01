@@ -16,7 +16,7 @@ private:
 	//Declare members
 	std::unique_ptr<int[]> _stack;
 	int _index;
-	StackState* _state;
+	StackState* _state; //Use raw so it works with this
 	int _size;
 
 	//Init function

@@ -71,6 +71,7 @@ namespace CAD {
 
 	//Clone
 	std::shared_ptr<CAD::Shape> Point::Clone() {
+		//Returns new shared pointer with same parameters
 		return std::make_shared<Point>(m_x, m_y);
 	}
 

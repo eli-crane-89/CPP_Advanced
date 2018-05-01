@@ -54,6 +54,7 @@ ShapeComposite& ShapeComposite::operator = (const ShapeComposite& source) {
 
 //Clone
 std::shared_ptr<CAD::Shape> ShapeComposite::Clone() {
+	//Returns new shared pointer with copied composite
 	return std::make_shared<ShapeComposite>(*this);
 }
 
