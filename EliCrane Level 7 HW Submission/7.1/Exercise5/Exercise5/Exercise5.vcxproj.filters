@@ -18,12 +18,6 @@
     <ClCompile Include="Exercise5.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ApproximateDistance.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ExactDistance.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Point.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -33,15 +27,12 @@
     <ClCompile Include="DistanceStrategy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StopWatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ApproximateDistance.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DistanceStrategy.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ExactDistance.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Point.hpp">

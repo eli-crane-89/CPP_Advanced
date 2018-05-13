@@ -143,17 +143,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ApproximateDistance.cpp" />
     <ClCompile Include="DistanceStrategy.cpp" />
-    <ClCompile Include="ExactDistance.cpp" />
     <ClCompile Include="Exercise5.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="StopWatch.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ApproximateDistance.hpp" />
     <ClInclude Include="DistanceStrategy.hpp" />
-    <ClInclude Include="ExactDistance.hpp" />
     <ClInclude Include="Point.hpp" />
     <ClInclude Include="Shape.hpp" />
   </ItemGroup>
