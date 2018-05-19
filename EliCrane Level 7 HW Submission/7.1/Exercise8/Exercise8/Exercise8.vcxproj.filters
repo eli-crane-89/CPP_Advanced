@@ -35,7 +35,7 @@
     <ClInclude Include="DVM.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Implementation.hpp">
+    <ClInclude Include="ImplementationEbay.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

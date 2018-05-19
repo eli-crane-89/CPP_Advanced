@@ -148,7 +148,7 @@
   <ItemGroup>
     <ClInclude Include="DVM.hpp" />
     <ClInclude Include="IMIS.hpp" />
-    <ClInclude Include="Implementation.hpp" />
+    <ClInclude Include="ImplementationEbay.hpp" />
     <ClInclude Include="IResource.hpp" />
     <ClInclude Include="ISink.hpp" />
     <ClInclude Include="ISource.hpp" />

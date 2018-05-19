@@ -1,10 +1,14 @@
 #include "DVM.hpp"
-#include "Implementation.hpp"
+#include "ImplementationEbay.hpp"
 
 int main()
 {
+	//a)
 	DVM<EbaySource, EbayResource, EbaySink, EbayMIS> dvmEbay;
 	dvmEbay.runItemBuyingSystem();
+
+	//b)
+
 
     return 0;
 }

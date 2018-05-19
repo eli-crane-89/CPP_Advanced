@@ -31,7 +31,8 @@ public:
 		auto productChoice = p_GSource.get()->message(); //Get Customer Input As Tuple
 		p_GResource.get()->getProduct(productChoice); //Inform Customer of Purchase
 		p_GResource.get()->updateProduct(productChoice); //Update Product Amount
-		p_GSink.get()->notify(std::get<0>(productChoice), true); //Thank customer
+		bool valuedCustomer = std::get<1>(productChoice) >= 5 ? true : false; //Flag for valued customer
+		p_GSink.get()->notify(std::get<0>(productChoice), valuedCustomer); //Thank customer
 		p_GMIS.get()->notify(); //Close Session
 	}
 
